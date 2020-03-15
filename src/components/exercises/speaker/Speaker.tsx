@@ -1,50 +1,49 @@
-import React, { useEffect, useState, useContext, useReducer } from "react";
-import { speakerData, Speaker } from "./speakerData";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useReducer,
+  useCallback
+} from "react";
+import { Speaker } from "./speakerData";
 import { SpeakerDetail } from "./SpeakerDetail";
-import { ConfigContext } from "../../context";
-import { speakerReducer } from "./speaker.service";
+import { ConfigContext } from "../../../context";
+import { speakerReducer, getData } from "./speaker.service";
 
 export const Speakers = () => {
   const [speakerList, dispatch] = useReducer(speakerReducer, []);
   const [isLoading, setIsLoading] = useState(false);
-
   const context = useContext(ConfigContext);
-  console.dir(context);
 
   useEffect(() => {
     setIsLoading(true);
-    new Promise(resolver => {
-      setTimeout(() => {
-        resolver(speakerData);
-      }, 1000);
-    }).then((data: any) => {
-      // setSpeakerList(data);
-      dispatch({
-        type: "setSpeakerList",
-        data
-      });
-      setIsLoading(false);
-    });
+    getData(dispatch, setIsLoading);
     return () => {
       console.log("Speaker: useEffect cleanup");
     };
   }, []);
 
-  const toggleFavorite = (e: any, value: boolean, id: number) => {
-    e.preventDefault();
-    dispatch({
-      type: value ? "favorite" : "unfavorite",
-      data: speakerList,
-      id
-    });
-  };
+  const toggleFavorite = useCallback(
+    (e: any, value: boolean, id: number) => {
+      e.preventDefault();
+      dispatch({
+        type: value ? "favorite" : "unfavorite",
+        data: speakerList,
+        id
+      });
+    },
+    [speakerList]
+  );
 
+  if (!context.showSpeakerSpeakingDays) {
+    return <div>FORBBIN</div>;
+  }
   if (isLoading) {
     return <div>Loading data...</div>;
   }
 
   return (
-    <div className="border w-full flex flex-col justify-center">
+    <div className="border w-full flex flex-col justify-center bg-gray-200">
       <h3 className="text-center my-3 text-2xl">Conference Dojo Hooks</h3>
       <div className="flex flex-wrap">
         {speakerList.map((item: Speaker) => {

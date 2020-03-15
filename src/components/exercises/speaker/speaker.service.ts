@@ -1,4 +1,4 @@
-import { Speaker } from "./speakerData";
+import { Speaker, speakerData } from "./speakerData";
 
 const updateFavorite = (payload: {
   items: Speaker[];
@@ -29,4 +29,21 @@ export const speakerReducer = (state: any, action: any) => {
     default:
       return state;
   }
+};
+
+export const getData = (
+  dispatch: React.Dispatch<any>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  new Promise(resolver => {
+    setTimeout(() => {
+      resolver(speakerData);
+    }, 1000);
+  }).then((data: any) => {
+    dispatch({
+      type: "setSpeakerList",
+      data
+    });
+    setIsLoading(false);
+  });
 };

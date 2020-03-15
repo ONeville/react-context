@@ -1,10 +1,11 @@
 import React from "react";
-import head from "../../assets/images/head.png";
+import head from "../../../assets/images/head.png";
 
 export const SpeakerDetail = React.memo(
   ({ speaker, onToggleFavorite }: any) => {
+    console.log(`${speaker.id} -  ${speaker.lastName} - FAV: ${speaker.favorite}`);
     return (
-      <div className="max-w-sm rounded m-4 bg-white shadow-lg">
+      <div className="max-w-sm rounded my-4 mx-2 bg-white shadow-lg">
         <img
           className="w-1/4 mx-auto"
           src={head}

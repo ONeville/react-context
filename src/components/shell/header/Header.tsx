@@ -29,6 +29,11 @@ export const HeaderPage = () => (
                 Exercises
               </span>
             </NavLink>
+            <NavLink activeClassName="text-white" to="/conference">
+              <span className="block mx-4 lg:inline-block lg:mt-0 hover:text-white">
+                Conference
+              </span>
+            </NavLink>
             <NavLink activeClassName="text-white" to="/course">
               <span className="block mx-4 lg:inline-block lg:mt-0 hover:text-white">
                 Courses

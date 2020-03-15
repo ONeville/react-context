@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SignMeUp } from "./signMeUp";
-import { Speakers } from "./Speaker";
 
 export const HomePage = () => (
   <div className="flex flex-col w-full h-full bg-gray-300">
@@ -15,9 +14,6 @@ export const HomePage = () => (
 
     <div className="my-4 p-5">
       <SignMeUp />
-    </div>
-    <div className="my-4 p-5">
-      <Speakers />
     </div>
   </div>
 );
