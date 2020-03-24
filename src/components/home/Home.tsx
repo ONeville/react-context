@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SignMeUp } from "./signMeUp";
+// import { SignMeUp } from "./signMeUp";
+import { Carousel } from "../exercises";
 
 export const HomePage = () => (
   <div className="flex flex-col w-full h-full bg-gray-300">
@@ -13,7 +14,8 @@ export const HomePage = () => (
     </nav>
 
     <div className="my-4 p-5">
-      <SignMeUp />
+      {/* <SignMeUp /> */}
+      <Carousel />
     </div>
   </div>
 );
