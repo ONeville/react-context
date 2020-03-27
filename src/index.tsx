@@ -5,7 +5,6 @@ import "./assets/tw/index.css";
 import { App } from "./App";
 import { configValue, ConfigContext } from "./context";
 
-
 ReactDOM.render(
   <ConfigContext.Provider value={configValue}>
     <Router>

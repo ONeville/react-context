@@ -1,7 +1,10 @@
 module.exports = {
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["champagne__limousinesregular"]
+    },
+    extend: {}
   },
   variants: {},
-  plugins: [],
-}
+  plugins: []
+};

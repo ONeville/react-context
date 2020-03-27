@@ -48,9 +48,7 @@ export const Carousel = () => {
           <Slide key={i} image={image} />
         ))}
       </div>
-
       <LeftArrow prevSlide={() => goToPrevSlide()} />
-
       <RightArrow nextSlide={() => goToNextSlide()} />
     </div>
   );
