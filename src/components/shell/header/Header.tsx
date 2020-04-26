@@ -28,7 +28,7 @@ export const HeaderPage = () => (
           <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
             Service
           </NavLink>
-          <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
+          <NavLink to="/carousel" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
             Presentations
           </NavLink>
           <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
