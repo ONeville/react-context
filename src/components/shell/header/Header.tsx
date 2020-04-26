@@ -2,58 +2,40 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export const HeaderPage = () => (
-  <nav className="bg-red-800">
-    <div className="container mx-auto px-4">
-      <div className="flex items-center md:justify-between py-4">
-        <div className="w-1/4 md:hidden">
+  <header>
+    <div className="flex justify-between items-center h-24 bg-gray-300">
+      <div className="log-block w-1/4 bg-red-200">
+        <div className="bg-white">
           <svg
-            className="fill-current text-white h-8 w-8"
+            className="fill-curent h-16 w-16"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
           >
-            <path d="M16.4 9H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zm0 4H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zM3.6 7h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1z" />
+            <path d="M6.1 21.98a1 1 0 0 1-1.45-1.06l1.03-6.03-4.38-4.26a1 1 0 0 1 .56-1.71l6.05-.88 2.7-5.48a1 1 0 0 1 1.8 0l2.7 5.48 6.06.88a1 1 0 0 1 .55 1.7l-4.38 4.27 1.04 6.03a1 1 0 0 1-1.46 1.06l-5.4-2.85-5.42 2.85zm4.95-4.87a1 1 0 0 1 .93 0l4.08 2.15-.78-4.55a1 1 0 0 1 .29-.88l3.3-3.22-4.56-.67a1 1 0 0 1-.76-.54l-2.04-4.14L9.47 9.4a1 1 0 0 1-.75.54l-4.57.67 3.3 3.22a1 1 0 0 1 .3.88l-.79 4.55 4.09-2.15z" />
           </svg>
         </div>
-        <div className="w-1/2 md:w-auto text-center text-white text-2xl font-medium">
-          Dojo Hooks
-        </div>
-        <div className="w-1/4 md:w-auto md:flex text-right">
-          <div className="text-red-300">
-            <NavLink to="/" exact activeClassName="text-white">
-              <span className="block mx-4 lg:inline-block lg:mt-0 hover:text-white">
-                Home
-              </span>
-            </NavLink>
-            <NavLink activeClassName="text-white" to="/counter">
-              <span className="block mx-4 lg:inline-block lg:mt-0 hover:text-white">
-                Exercises
-              </span>
-            </NavLink>
-            <NavLink activeClassName="text-white" to="/conference">
-              <span className="block mx-4 lg:inline-block lg:mt-0 hover:text-white">
-                Conference
-              </span>
-            </NavLink>
-            <NavLink activeClassName="text-white" to="/course">
-              <span className="block mx-4 lg:inline-block lg:mt-0 hover:text-white">
-                Courses
-              </span>
-            </NavLink>
-          </div>
-          <div className="hidden md:block md:flex md:items-center ml-2">
-            <span className="text-white text-sm mr-1">Dojo Hooks</span>
-            <div>
-              <svg
-                className="fill-current text-white h-4 w-4 block opacity-50"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 0 1-1.576 0S4.924 9.581 4.516 9.163c-.409-.418-.436-1.17 0-1.615z" />
-              </svg>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div className="menu-block w-3/4">
+        <nav className="flex text-right">
+          <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
+            Home
+          </NavLink>
+          <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
+            About
+          </NavLink>
+          <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
+            Service
+          </NavLink>
+          <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
+            Presentations
+          </NavLink>
+          <NavLink to="/" className="px-4 my-4 text-lg font-semibold cursor-pointer text-center text-gray-900 hover:text-green-400">
+            Contact
+          </NavLink>
+        </nav>
       </div>
     </div>
-  </nav>
+  </header>
 );
