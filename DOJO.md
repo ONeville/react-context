@@ -10,3 +10,5 @@ Non-hierarchical data
 Many actions
 Same data used in many places
 
+https://github.com/DZuz14/react-hooks-image-slider
+

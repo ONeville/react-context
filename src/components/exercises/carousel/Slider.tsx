@@ -1,13 +1,19 @@
+/** @jsx jsx */
 import React, { useState, useRef, useEffect } from "react";
-import { css } from "@emotion/core";
-import { SliderContentCompo } from "./Slidee-content";
+import { css, jsx } from "@emotion/core";
+import { SliderContent } from "./Slider-content";
 import { SlideCompo } from "./Slide";
 import { ArrowCompo } from "./Arrow";
 import { DotsCompo } from "./Dots";
 
 const getWidth = () => window.innerWidth;
 
-export const SliderCompo = ({ slides, autoPlay, widthProp, heightProp }: any) => {
+export const SliderCompo = ({
+  slides,
+  autoPlay,
+  widthProp,
+  heightProp,
+}: any) => {
   const firstSlide = slides[0];
   const secondSlide = slides[2];
   const lastSlide = slides[slides.length - 1];
@@ -75,7 +81,7 @@ export const SliderCompo = ({ slides, autoPlay, widthProp, heightProp }: any) =>
       resizeRef.current();
     };
 
-    const transitionEnd = window.addEventListener("transitionend", smooth);
+    const transitionEnd = window.addEventListener("transitionend", (e)=> smooth(e));
     const onResize = window.addEventListener("resize", resize);
 
     let interval: any = null;
@@ -85,45 +91,51 @@ export const SliderCompo = ({ slides, autoPlay, widthProp, heightProp }: any) =>
     }
 
     return () => {
-    //   window.removeEventListener("transitionend", transitionEnd);
-    //   window.removeEventListener("resize", onResize);
+      window.removeEventListener("transitionend", e => transitionEnd);
+      window.removeEventListener("resize", e => onResize);
 
       if (autoPlay) {
         clearInterval(interval);
       }
     };
-  }, []);
+  }, [autoPlay]);
 
   useEffect(() => {
     if (transition === 0) setState({ ...state, transition: 0.45 });
-  }, [transition]);
+  }, [transition, state]);
 
   const handleResize = () => {
     setState({ ...state, translate: getWidth(), transition: 0 });
   };
 
+  // const sliderCSS = css`
+  //   height: ${heightProp ? heightProp + "px" : "100vh"};
+  //   width: ${widthProp ? widthProp + "px" : "100vw"};
+  // `;
+
+  //  width: 100%;
   const sliderCSS = css`
     height: ${heightProp ? heightProp + "px" : "100vh"};
-    width: ${widthProp ? widthProp + "px" : "100vw"};
   `;
 
   return (
-    <div css={sliderCSS} className="relative overflow-hidden mx-auto whitespace-no-wrap">
-      <SliderContentCompo
+    <div
+      css={sliderCSS}
+      className="relative w-full overflow-hidden mx-auto whitespace-no-wrap"
+    >
+      <SliderContent
         translate={translate}
         transition={transition}
         width={getWidth() * _slides.length}
       >
         {_slides.map((_slide, i) => {
-          return (
-            <SlideCompo key={_slide + i} width={getWidth()} content={_slide} />
-          );
+          return <SlideCompo key={i + 12} width={getWidth()} content={_slide} />;
         })}
-      </SliderContentCompo>
+      </SliderContent>
 
       <ArrowCompo direction="left" handleClick={prevSlide} />
       <ArrowCompo direction="right" handleClick={nextSlide} />
-	  <DotsCompo slides={slides} activeSlide={activeSlide} />
+      <DotsCompo slides={slides} activeSlide={activeSlide} />
     </div>
   );
 };
